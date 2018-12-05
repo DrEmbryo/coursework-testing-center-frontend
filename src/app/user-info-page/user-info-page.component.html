@@ -6,9 +6,9 @@
           <img src="https://pp.userapi.com/c836725/v836725638/2eb12/7_2lKkRKSHo.jpg" alt="test">
         </div>
         <div class="profile_card_user_info">
-          <h1>name</h1>
-          <h2>surname</h2>
-          <p>course 3</p>
+          <h1>{{user.name}}</h1>
+          <h2>{{user.surname}}</h2>
+          <p>Courese: {{user.course}}</p>
         </div>
       </div>
      </div>
@@ -22,10 +22,12 @@
           <div>Subject</div>
           <div>%</div>
         </div>
-        <div class="detail_spreadsheet">
-          <div>{{result.date}}</div>
-          <div>{{result.subject}}</div>
-          <div>{{result.procent}}</div>
+        <div class="detail_spreadsheet_container">
+            <div *ngFor="let result of results" class="detail_spreadsheet">
+                <div>{{result.date}}</div>
+                <div>{{result.subject}}</div>
+                <div>{{result.procent}}%</div>
+              </div>
         </div>
      </div>
     </div>

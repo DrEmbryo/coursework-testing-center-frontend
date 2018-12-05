@@ -60,12 +60,17 @@
     padding-top: 10px;
 }
 
+.user_info_user_details {
+    padding: 0px 15px;
+    padding-bottom: 25px;
+    overflow: hidden;
+}
+
 .details_menu {
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
     padding-top: 25px;
-    padding-right: 15px;
     padding-bottom: 30px;
 }
 
@@ -88,12 +93,27 @@
     border-bottom: 3px solid #449db8ec;
     display: grid;
     grid-template-columns: 2fr 5fr 2fr ;
-    margin: 0px 15px ;
     text-align: center;
+    width: 100%;
 }
 
 .detail_spreadsheet {
     display: grid;
     grid-template-columns: 2fr 5fr 2fr ;
-    margin: 0px 15px ;
+    text-align: center;
+}
+
+
+.detail_spreadsheet:nth-of-type(odd) {
+    background-color: #ffffff;
+}
+
+.detail_spreadsheet:nth-of-type(even) {
+    background-color: #dbdbdb;
+}
+
+.detail_spreadsheet_container {
+    height: calc(100% - 142px);
+    padding-bottom: 25px;
+    overflow: auto;
 }

@@ -1,0 +1,72 @@
+.test-list_screen {
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif ;
+    background-image: url(https://images.pexels.com/photos/933054/pexels-photo-933054.jpeg);
+    background-color: #000000;
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+
+.test-list_card {
+    position: absolute;
+    width: 50vw;
+    height: 70vh;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50% , -50%) ;
+    background-color: rgba(255, 255, 255, 0.7);
+    border-top: 3px solid #449db8ec;
+}
+
+.test-list_card h1{
+    text-align: center;
+    padding: 20px 0px; ;
+}
+
+.test-list-data-container {
+    width: 100%;
+    height: calc(100% - 180px);
+    overflow:auto;
+}
+
+.test-list-data {
+    display: grid;
+    grid-template-columns: 1fr 10fr;
+    margin: 0 10% ;
+    font-size: 22pt;
+}
+
+.test-list-data:nth-of-type(odd) {
+background-color: #fafafa;
+}
+
+.test-list-data h3 {
+    text-align: center;
+}
+
+
+.test-list_menu {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    padding-top: 25px;
+    padding-right: 15px;
+    padding-bottom: 30px;
+}
+
+.test-list_menu_button {
+    margin-right: 20px;
+    border-radius: 7px;
+    background-color: rgba(68, 157, 184, 0.2);
+    transition:  background-color 250ms linear;
+    padding: 10px 15px;
+}
+
+.test-list_menu_button:hover{
+    transition:  background-color 250ms linear;
+    background-color: rgba(68, 157, 184, 1);
+    cursor: pointer;
+    color: #ffffff;
+}

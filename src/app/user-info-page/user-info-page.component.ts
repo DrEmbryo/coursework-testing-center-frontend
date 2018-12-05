@@ -8,8 +8,23 @@ import { Component, OnInit } from '@angular/core';
 export class UserInfoPageComponent implements OnInit {
 
   constructor() { }
+  user: object;
+  results: object [] = [] ;
 
   ngOnInit() {
+    this.user = {
+      name: <string> 'Pavel',
+      surname: <string> 'Goroshko',
+      course: <number> 3
+    };
+
+    this.results = [
+      {
+        date: <string> '10.10.2010',
+        subject: <string> 'Math',
+        procent: <number> 20,
+      },
+    ];
   }
 
 }

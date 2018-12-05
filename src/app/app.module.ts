@@ -5,6 +5,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
 import { LoginPageComponent } from './login-page/login-page.component';
 import { UserInfoPageComponent } from './user-info-page/user-info-page.component';
+import { TestListComponent } from './test-list/test-list.component';
 
 const appRoutes: Routes = [
   {
@@ -14,6 +15,10 @@ const appRoutes: Routes = [
   {
     path: 'user',
     component: UserInfoPageComponent,
+  },
+  {
+    path: 'test-list',
+    component: TestListComponent,
   },
   {
   path: '**',
@@ -26,7 +31,8 @@ const appRoutes: Routes = [
   declarations: [
     AppComponent,
     LoginPageComponent,
-    UserInfoPageComponent
+    UserInfoPageComponent,
+    TestListComponent
   ],
   imports: [
     BrowserModule,

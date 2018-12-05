@@ -1,0 +1,15 @@
+<div class="test-list_screen">
+    <div class="test-list_card">
+        <h1>Select test</h1>
+        <div class="test-list-data-container">
+            <div *ngFor="let test of testList; let i = index" class="test-list-data">
+                <h3>{{i+1}}</h3>
+                <div>{{test.name}}</div>
+            </div>
+        </div>
+        <div class="test-list_menu">
+            <div class="test-list_menu_button" [routerLink]="['/user']">Back</div>
+        </div>  
+   </div>
+</div>
+  
