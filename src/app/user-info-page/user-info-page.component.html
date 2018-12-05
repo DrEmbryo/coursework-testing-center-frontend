@@ -1,0 +1,33 @@
+<div class="user_info_screen">
+    <div class="user_info_card">
+     <div class="user_profile">
+      <div class="profile_card"> 
+        <div class="profile_card_img">
+          <img src="https://pp.userapi.com/c836725/v836725638/2eb12/7_2lKkRKSHo.jpg" alt="test">
+        </div>
+        <div class="profile_card_user_info">
+          <h1>name</h1>
+          <h2>surname</h2>
+          <p>course 3</p>
+        </div>
+      </div>
+     </div>
+     <div class="user_info_user_details">
+       <div class="details_menu">
+         <div class="details_menu_button" [routerLink]="['/test-list']">Test List</div>
+         <div class="details_menu_button">Log Out</div>
+       </div>
+        <div class="detail_spreadsheet_hedliner">
+          <div>Date</div>
+          <div>Subject</div>
+          <div>%</div>
+        </div>
+        <div class="detail_spreadsheet">
+          <div>{{result.date}}</div>
+          <div>{{result.subject}}</div>
+          <div>{{result.procent}}</div>
+        </div>
+     </div>
+    </div>
+  </div>
+  
