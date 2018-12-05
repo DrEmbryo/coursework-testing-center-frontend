@@ -1,4 +1,4 @@
-.test-list_screen {
+.test_screen {
     width: 100vw;
     height: 100vh;
     position: relative;
@@ -9,7 +9,7 @@
     background-size: 100%;
 }
 
-.test-list_card {
+.test_card {
     position: absolute;
     width: 50vw;
     height: 70vh;
@@ -20,54 +20,41 @@
     border-top: 3px solid #449db8ec;
 }
 
-.test-list_card h1{
-    text-align: center;
-    padding: 20px 0px; ;
-}
-
-.test-list-data-container {
-    width: 100%;
-    height: calc(100% - 180px);
-    overflow:auto;
-}
-
-.test-list-data {
-    display: grid;
-    grid-template-columns: 1fr 10fr;
-    margin: 0 10% ;
-    font-size: 22pt;
-}
-
-.test-list-data:nth-of-type(odd) {
-background-color: #fafafa;
-}
-
-.test-list-data h3 {
-    text-align: center;
-}
-
-
-.test-list_menu {
+.test_button_container {
     display: flex;
     flex-direction: row;
+    align-content: center;
     justify-content: flex-end;
     padding-top: 25px;
     padding-right: 15px;
-    padding-bottom: 30px;
+    padding-bottom: 30px; 
 }
 
-.test-list_menu_button {
+.test_button {
     margin-right: 20px;
     border-radius: 7px;
     background-color: rgba(68, 157, 184, 0.2);
     transition:  background-color 250ms linear;
     padding: 10px 15px;
     border: none;
+    height: auto;
 }
 
-.test-list_menu_button:not([disabled]):hover{
+.test_button:not([disabled]):hover{
     transition:  background-color 250ms linear;
     background-color: rgba(68, 157, 184, 1);
     cursor: pointer;
     color: #ffffff;
+}
+
+.test_grid {
+    width: 100%;
+    height:  calc(100% - 100px);
+    display: grid;
+    grid-template-rows: 1fr 5fr;
+}
+
+.test_question_text {
+    align-self: center;
+    justify-self: center;
 }

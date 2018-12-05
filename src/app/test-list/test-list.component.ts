@@ -10,6 +10,14 @@ export class TestListComponent implements OnInit {
   constructor() { }
 
   testList: object [] = [] ;
+  itemSelected: boolean;
+  indexOfSelectedItem: number;
+
+  onTestSelect(i: number) {
+    this.indexOfSelectedItem = i;
+    this.itemSelected = true;
+    console.log(this.indexOfSelectedItem);
+  }
 
   ngOnInit() {
     this.testList = [
@@ -18,26 +26,10 @@ export class TestListComponent implements OnInit {
       },
       {
         name: <string> 'test2'
-      },
-      {
-        name: <string> 'test1'
-      },
-      {
-        name: <string> 'test4'
-      },
-      {
-        name: <string> 'test1'
-      },
-      {
-        name: <string> 'test2'
-      },
-      {
-        name: <string> 'test1'
-      },
-      {
-        name: <string> 'test4'
-      },
+      }
     ];
+
+    this.itemSelected = false;
   }
 
 }

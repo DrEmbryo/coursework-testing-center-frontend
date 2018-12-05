@@ -1,0 +1,20 @@
+<div class="test_screen">
+    <div class="test_card">
+      <div class="test_grid">
+          <div class="test_question_text">
+              <h5>{{question.text}}</h5>
+          </div>
+          <div>
+            <div [ngSwitch]="question.type">
+              <div *ngSwitchCase="'check'">check</div>
+              <div *ngSwitchCase="'input'">input</div>
+              <div *ngSwitchCase="'select'">select</div>
+            </div>
+          </div>
+          </div>
+      <div class="test_button_container">
+          <div class="test_button">next</div>
+      </div>
+  </div>
+</div>
+  

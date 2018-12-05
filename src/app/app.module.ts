@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { LoginPageComponent } from './login-page/login-page.component';
 import { UserInfoPageComponent } from './user-info-page/user-info-page.component';
 import { TestListComponent } from './test-list/test-list.component';
+import { TestPageComponent } from './test-page/test-page.component';
 
 const appRoutes: Routes = [
   {
@@ -21,6 +22,10 @@ const appRoutes: Routes = [
     component: TestListComponent,
   },
   {
+    path: 'test',
+    component: TestPageComponent,
+  },
+  {
   path: '**',
   component: LoginPageComponent,
   }
@@ -32,7 +37,8 @@ const appRoutes: Routes = [
     AppComponent,
     LoginPageComponent,
     UserInfoPageComponent,
-    TestListComponent
+    TestListComponent,
+    TestPageComponent
   ],
   imports: [
     BrowserModule,

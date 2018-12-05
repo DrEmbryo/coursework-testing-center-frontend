@@ -4,10 +4,13 @@
         <div class="test-list-data-container">
             <div *ngFor="let test of testList; let i = index" class="test-list-data">
                 <h3>{{i+1}}</h3>
-                <div>{{test.name}}</div>
+                <div (click)="onTestSelect(i)">{{test.name}}</div>
             </div>
         </div>
         <div class="test-list_menu">
+            <button type="button" class="test-list_menu_button" 
+            [routerLink]="['/test']" 
+            [disabled]="itemSelected !== true">Start test</button>
             <div class="test-list_menu_button" [routerLink]="['/user']">Back</div>
         </div>  
    </div>
