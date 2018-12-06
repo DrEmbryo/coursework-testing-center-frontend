@@ -1,0 +1,50 @@
+.result_screen {
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif ;
+    background-image: url(https://images.pexels.com/photos/933054/pexels-photo-933054.jpeg);
+    background-color: #000000;
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+
+.result_card {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50% , -50%) ;
+    background-color: rgba(255, 255, 255, 0.7);
+    border-top: 3px solid #449db8ec;
+}
+
+.result_form {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+    padding: 20px 25px;
+}
+
+.result_card h1{
+    text-align: center;
+    padding-bottom: 20px; ;
+}
+
+.result_button {
+    text-align: center;
+    border-radius: 7px;
+    background-color: rgba(68, 157, 184, 0.2);
+    transition:  background-color 250ms linear;
+    padding: 10px 15px;
+    border: none;
+    height: auto;
+}
+
+.result_button:hover{
+    transition:  background-color 250ms linear;
+    background-color: rgba(68, 157, 184, 1);
+    cursor: pointer;
+    color: #ffffff;
+}
+

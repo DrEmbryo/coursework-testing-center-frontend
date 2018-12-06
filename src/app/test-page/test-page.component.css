@@ -58,3 +58,29 @@
     align-self: center;
     justify-self: center;
 }
+
+.test_question_check {
+    display: grid;
+    grid-template-columns: 1fr 10fr;
+}
+
+.test_question_check_box {
+    text-align: center;
+} 
+
+.test_question_check_box input:hover {
+    cursor: pointer;
+} 
+
+.test_question_input {
+    text-align: center;
+}
+
+.test_question_input  input{
+    width: calc(100% - 120px);
+    font-size: 12pt;
+    height: 18px;
+    padding: 20px 25px;
+    border: none;
+    outline: none;
+}

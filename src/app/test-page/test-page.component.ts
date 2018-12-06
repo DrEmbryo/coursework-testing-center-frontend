@@ -16,6 +16,20 @@ export class TestPageComponent implements OnInit {
       last: <boolean> false,
       text: <string> 'test question',
       type: <string> 'check',
+      answers: [
+        {
+          text: <string> 'test'
+        },
+        {
+          text: <string> 'test2'
+        },
+        {
+          text: <string> 'test3'
+        },
+        {
+          text: <string> 'test4'
+        },
+      ],
     };
   }
 

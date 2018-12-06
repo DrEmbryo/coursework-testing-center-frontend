@@ -1,20 +1,33 @@
 <div class="test_screen">
     <div class="test_card">
-      <div class="test_grid">
-          <div class="test_question_text">
-              <h5>{{question.text}}</h5>
-          </div>
-          <div>
-            <div [ngSwitch]="question.type">
-              <div *ngSwitchCase="'check'">check</div>
-              <div *ngSwitchCase="'input'">input</div>
-              <div *ngSwitchCase="'select'">select</div>
+        <div class="test_grid">
+            <div class="test_question_text">
+                <h4>{{question.text}}</h4>
             </div>
-          </div>
-          </div>
-      <div class="test_button_container">
-          <div class="test_button">next</div>
-      </div>
-  </div>
+            <div>
+                <div [ngSwitch]="question.type">
+                    <div *ngSwitchCase="'check'">
+                        <div class="test_question_check" *ngFor="let answer of question.answers">
+                            <div class="test_question_check_box">
+                                <input type="checkbox">
+                            </div>
+                            <div>
+                                {{answer.text}}
+                            </div>
+                        </div>
+                    </div>
+                    <div *ngSwitchCase="'input'">
+                        <div class="test_question_input">
+                            <input type="text">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="test_button_container">
+            <div *ngIf="!question.last" class="test_button">next</div>
+            <div *ngIf="question.last" class="test_button">end</div>
+        </div>
+    </div>
 </div>
   
