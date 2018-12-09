@@ -10,6 +10,7 @@ import { UserInfoPageComponent } from './user-info-page/user-info-page.component
 import { TestListComponent } from './test-list/test-list.component';
 import { TestPageComponent } from './test-page/test-page.component';
 import { ResultPageComponent } from './result-page/result-page.component';
+import { HttpClientModule } from '@angular/common/http';
 
 const appRoutes: Routes = [
   {
@@ -52,6 +53,7 @@ const appRoutes: Routes = [
     BrowserModule,
     StorageServiceModule,
     RouterModule.forRoot(appRoutes),
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

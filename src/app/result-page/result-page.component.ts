@@ -8,8 +8,13 @@ import { Component, OnInit } from '@angular/core';
 export class ResultPageComponent implements OnInit {
 
   constructor() { }
+  result: any;
 
   ngOnInit() {
+    this.result = {
+      all: 1,
+      correct: 1,
+    } ;
   }
 
 }

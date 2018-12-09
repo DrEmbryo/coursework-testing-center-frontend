@@ -71,3 +71,7 @@ background-color: #fafafa;
     cursor: pointer;
     color: #ffffff;
 }
+
+.test-list-data-active {
+    border: 1px solid #449db8ec;
+}
