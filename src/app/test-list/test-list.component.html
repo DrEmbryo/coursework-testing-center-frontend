@@ -2,15 +2,18 @@
     <div class="test-list_card">
         <h1>Select test</h1>
         <div class="test-list-data-container">
-            <div *ngFor="let test of testList; let i = index" class="test-list-data">
+            <div  [ngClass]="{'test-list-data-active': i==selectedIndex}"
+            *ngFor="let test of testList; let i = index" 
+            class="test-list-data" 
+            (click)="onTestSelect(i)">
                 <h3>{{i+1}}</h3>
-                <div (click)="onTestSelect(i)">{{test.name}}</div>
+                <div>{{test.testName}}</div>
             </div>
         </div>
         <div class="test-list_menu">
             <button type="button" class="test-list_menu_button" 
             [routerLink]="['/test']" 
-            [disabled]="itemSelected !== true">Start test</button>
+            [disabled]="itemSelected !== true" (click)="onTestStart()">Start test</button>
             <div class="test-list_menu_button" [routerLink]="['/user']">Back</div>
         </div>  
    </div>

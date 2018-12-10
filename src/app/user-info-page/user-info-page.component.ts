@@ -23,35 +23,19 @@ interface IuserData {
 export class UserInfoPageComponent implements OnInit {
 
   constructor(private http: HttpClient) { }
-  results: object [] = [] ;
-  user = {
-    avatar: '',
-    name: '',
-    surname: '',
-    email: ''
-  };
+  results: any ;
+  user: any;
 
   ngOnInit() {
     this.http.get<IuserInfo>('/api/user' , { observe: 'response' } )
     .subscribe(res => {
-      this.user.avatar = res.body.avatar;
-      this.user.name = res.body.name;
-      this.user.surname = res.body.surname;
-      this.user.email = res.body.email;
+      this.user = res.body;
     });
 
     this.http.get<IuserData>('/api/user-data' , { observe: 'response' } )
     .subscribe(res => {
-
+      this.results = res.body ;
     });
-
-    this.results = [
-      {
-        date: '10.10.2010',
-        subject: 'Math',
-        procent: 20,
-      },
-    ];
   }
 
 }

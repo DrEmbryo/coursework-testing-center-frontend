@@ -36,6 +36,8 @@
     grid-template-columns: 1fr 10fr;
     margin: 0 10% ;
     font-size: 22pt;
+    cursor: pointer;
+    border: 3px solid transparent;
 }
 
 .test-list-data:nth-of-type(odd) {
@@ -73,5 +75,5 @@ background-color: #fafafa;
 }
 
 .test-list-data-active {
-    border: 1px solid #449db8ec;
+    border: 3px solid rgba(68, 157, 184, 0.7);
 }

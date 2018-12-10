@@ -1,4 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ElementRef } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { ActivatedRoute, Router } from '@angular/router';
+
+
+interface ItestList {
+  id: string;
+  testName: string;
+}
 
 @Component({
   selector: 'app-test-list',
@@ -7,29 +15,28 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TestListComponent implements OnInit {
 
-  constructor() { }
-
-  testList: object [] = [] ;
+  constructor(private http: HttpClient, private elemRef: ElementRef, private route: ActivatedRoute , private router: Router) { }
   itemSelected: boolean;
-  indexOfSelectedItem: number;
+  selectedIndex: number;
+  testList: any ;
+  selectedTestId: string;
 
   onTestSelect(i: number) {
-    this.indexOfSelectedItem = i;
+    this.selectedIndex = i;
+    this.selectedTestId = this.testList[i].id;
     this.itemSelected = true;
-    console.log(this.indexOfSelectedItem);
+  }
+
+  onTestStart() {
+    this.router.navigate(['/test', this.selectedTestId]);
   }
 
   ngOnInit() {
-    this.testList = [
-      {
-        name: <string> 'test1'
-      },
-      {
-        name: <string> 'test2'
-      }
-    ];
-
     this.itemSelected = false;
+    this.http.get<ItestList>('/api/test-list' , { observe: 'response' } )
+    .subscribe(res => {
+      this.testList = res.body ;
+    });
   }
 
 }

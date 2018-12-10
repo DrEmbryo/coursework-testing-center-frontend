@@ -26,7 +26,7 @@ const appRoutes: Routes = [
     component: TestListComponent,
   },
   {
-    path: 'test',
+    path: 'test/:id',
     component: TestPageComponent,
   },
   {
