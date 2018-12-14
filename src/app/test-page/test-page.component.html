@@ -2,31 +2,24 @@
     <div class="test_card">
         <div class="test_grid">
             <div class="test_question_text">
-                <h4>{{question.text}}</h4>
+                <h4>{{question.question}}</h4>
             </div>
             <div>
-                <div [ngSwitch]="question.type">
-                    <div *ngSwitchCase="'check'">
-                        <div class="test_question_check" *ngFor="let answer of question.answers">
-                            <div class="test_question_check_box">
-                                <input type="checkbox">
-                            </div>
-                            <div>
-                                {{answer.text}}
-                            </div>
+                <div>
+                    <div class="test_question_check" *ngFor="let answer of question.answers">
+                        <div class="test_question_check_box">
+                            <input type="checkbox">
                         </div>
-                    </div>
-                    <div *ngSwitchCase="'input'">
-                        <div class="test_question_input">
-                            <input type="text">
+                        <div>
+                            {{answer}}
                         </div>
                     </div>
                 </div>
             </div>
         </div>
         <div class="test_button_container">
-            <div *ngIf="!question.last" class="test_button">next</div>
-            <div *ngIf="question.last" class="test_button">end</div>
+            <div *ngIf="!last" class="test_button" (click)="nextQuestion()">next</div>
+            <div *ngIf="last" class="test_button" (click)="endTest()">end</div>
         </div>
     </div>
 </div>

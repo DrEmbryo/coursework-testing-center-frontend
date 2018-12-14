@@ -3,10 +3,10 @@
     <div class="login_form">
       <h1>Login</h1>
       <div>
-          <input type="text" placeholder="Login">
+          <input type="text" placeholder="Login" [formControl]="login">
       </div>
       <div>
-          <input type="password" placeholder="Password">
+          <input type="password" placeholder="Password" [formControl]="password">
       </div>
       <div class="Login_form_submit" (click)="sendLoginData()">Login</div>
     </div>

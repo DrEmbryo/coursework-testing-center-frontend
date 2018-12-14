@@ -1,6 +1,6 @@
-import { Component, OnInit, ElementRef } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 
 
 interface ItestList {
@@ -15,7 +15,7 @@ interface ItestList {
 })
 export class TestListComponent implements OnInit {
 
-  constructor(private http: HttpClient, private elemRef: ElementRef, private route: ActivatedRoute , private router: Router) { }
+  constructor(private http: HttpClient, private router: Router) { }
   itemSelected: boolean;
   selectedIndex: number;
   testList: any ;
@@ -23,7 +23,7 @@ export class TestListComponent implements OnInit {
 
   onTestSelect(i: number) {
     this.selectedIndex = i;
-    this.selectedTestId = this.testList[i].id;
+    this.selectedTestId = this.testList[i]._id;
     this.itemSelected = true;
   }
 
@@ -33,9 +33,10 @@ export class TestListComponent implements OnInit {
 
   ngOnInit() {
     this.itemSelected = false;
-    this.http.get<ItestList>('/api/test-list' , { observe: 'response' } )
+    this.http.get<ItestList>('/api/tests' , { observe: 'response' } )
     .subscribe(res => {
       this.testList = res.body ;
+      console.log(res.body);
     });
   }
 

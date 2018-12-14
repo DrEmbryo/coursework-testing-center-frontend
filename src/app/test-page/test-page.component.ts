@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router , ActivatedRoute } from '@angular/router';
+import { ApiCallsService } from '../api-calls.service';
+
 
 @Component({
   selector: 'app-test-page',
@@ -7,30 +10,44 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TestPageComponent implements OnInit {
 
-  constructor() { }
+  constructor(private route: Router , private activatedroute: ActivatedRoute, private api: ApiCallsService) { }
 
-  question: object ;
+  testData: any ;
+  questions;
+  currentQuestion = 0;
+  question: any ;
+  selectedTestId = 'tests/';
+  last: boolean;
 
-  ngOnInit() {
-    this.question = {
-      last: <boolean> false,
-      text: <string> 'test question',
-      type: <string> 'check',
-      answers: [
-        {
-          text: <string> 'test'
-        },
-        {
-          text: <string> 'test2'
-        },
-        {
-          text: <string> 'test3'
-        },
-        {
-          text: <string> 'test4'
-        },
-      ],
-    };
+  checkIfLast () {
+    if ((this.questions.length - 1) === this.currentQuestion) {
+      this.last = true;
+    }
   }
 
+  nextQuestion() {
+    this.currentQuestion++;
+    this.question = this.questions[this.currentQuestion];
+    console.log(this.questions.length);
+    console.log(this.currentQuestion);
+  }
+
+  endTest() {
+    this.route.navigate(['/test-result', this.selectedTestId]);
+  }
+
+  ngOnInit() {
+    this.question = {};
+    this.activatedroute.url.subscribe(data => {
+    this.selectedTestId += data[1].path;
+    });
+
+    this.api.get(this.selectedTestId)
+    .subscribe(res => {
+      this.testData = res.body;
+      this.questions = this.testData.questions;
+      this.question = this.questions[0];
+      this.checkIfLast ();
+    });
+  }
 }

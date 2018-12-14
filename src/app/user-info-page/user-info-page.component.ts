@@ -1,18 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { ApiCallsService } from '../api-calls.service';
 
-interface IuserInfo {
-  name: string ;
-  surname: string;
-  email: string ;
-  avatar: string;
-}
-
-interface IuserData {
-    date: string;
-    subject: string;
-    procent: number;
-}
 
 @Component({
   selector: 'app-user-info-page',
@@ -22,20 +10,24 @@ interface IuserData {
 
 export class UserInfoPageComponent implements OnInit {
 
-  constructor(private http: HttpClient) { }
+  constructor(private api: ApiCallsService) { }
+
   results: any ;
   user: any;
 
   ngOnInit() {
-    this.http.get<IuserInfo>('/api/user' , { observe: 'response' } )
+    this.user = {};
+
+    this.api.get('users/userdata')
     .subscribe(res => {
-      this.user = res.body;
+       this.user = res.body;
     });
 
-    this.http.get<IuserData>('/api/user-data' , { observe: 'response' } )
+    this.api.get('results')
     .subscribe(res => {
-      this.results = res.body ;
-    });
+      this.results = res.body;
+      console.log(this.results);
+   });
   }
 
 }

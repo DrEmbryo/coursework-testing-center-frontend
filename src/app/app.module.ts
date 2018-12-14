@@ -11,6 +11,8 @@ import { TestListComponent } from './test-list/test-list.component';
 import { TestPageComponent } from './test-page/test-page.component';
 import { ResultPageComponent } from './result-page/result-page.component';
 import { HttpClientModule } from '@angular/common/http';
+import { ReactiveFormsModule } from '@angular/forms';
+import { AuthGuard } from './auth.guard';
 
 const appRoutes: Routes = [
   {
@@ -20,18 +22,22 @@ const appRoutes: Routes = [
   {
     path: 'user',
     component: UserInfoPageComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'test-list',
     component: TestListComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'test/:id',
     component: TestPageComponent,
+    canActivate: [AuthGuard]
   },
   {
-    path: 'test-result',
+    path: 'test-result/:id',
     component: ResultPageComponent,
+    canActivate: [AuthGuard]
   },
   {
   path: '**',
@@ -54,8 +60,9 @@ const appRoutes: Routes = [
     StorageServiceModule,
     RouterModule.forRoot(appRoutes),
     HttpClientModule,
+    ReactiveFormsModule
   ],
-  providers: [],
+  providers: [AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
