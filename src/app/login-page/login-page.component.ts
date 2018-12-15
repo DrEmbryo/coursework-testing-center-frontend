@@ -22,7 +22,7 @@ export class LoginPageComponent implements OnInit {
       password: <string>this.password.value,
     };
 
-    this.api.post('auth/login', data)
+    this.api.put('auth/login', data)
     .subscribe(res => {
        if ( res.status === 200 ) {
         this.router.navigate(['user']);

@@ -12,6 +12,10 @@ export class ApiCallsService {
    return this.http.get(('/api/' + url) , { observe: 'response' } );
   }
 
+  put (url , postObj) {
+    return this.http.put(('/api/' + url) , postObj , { observe: 'response' } );
+  }
+
   post (url , postObj) {
     return this.http.post(('/api/' + url) , postObj , { observe: 'response' } );
   }

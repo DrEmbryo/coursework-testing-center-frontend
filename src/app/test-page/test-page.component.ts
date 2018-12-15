@@ -16,7 +16,7 @@ export class TestPageComponent implements OnInit {
   questions;
   currentQuestion = 0;
   question: any ;
-  selectedTestId = 'tests/';
+  url = 'tests/';
   last: boolean;
 
   checkIfLast () {
@@ -27,22 +27,21 @@ export class TestPageComponent implements OnInit {
 
   nextQuestion() {
     this.currentQuestion++;
+    this.checkIfLast ();
     this.question = this.questions[this.currentQuestion];
-    console.log(this.questions.length);
-    console.log(this.currentQuestion);
   }
 
   endTest() {
-    this.route.navigate(['/test-result', this.selectedTestId]);
+    this.route.navigate(['/test-result', this.url]);
   }
 
   ngOnInit() {
     this.question = {};
     this.activatedroute.url.subscribe(data => {
-    this.selectedTestId += data[1].path;
+    this.url += data[1].path;
     });
 
-    this.api.get(this.selectedTestId)
+    this.api.get(this.url)
     .subscribe(res => {
       this.testData = res.body;
       this.questions = this.testData.questions;
