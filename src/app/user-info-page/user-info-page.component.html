@@ -15,7 +15,7 @@
      <div class="user_info_user_details">
        <div class="details_menu">
          <div class="details_menu_button" [routerLink]="['/test-list']">Test List</div>
-         <div class="details_menu_button">Log Out</div>
+         <div class="details_menu_button" (click)="onLogOut()">Log Out</div>
        </div>
         <div class="detail_spreadsheet_hedliner">
           <div>Date</div>
@@ -24,7 +24,7 @@
         </div>
         <div class="detail_spreadsheet_container">
             <div *ngFor="let result of results" class="detail_spreadsheet">
-                <div>{{result.date}}</div>
+                <div>{{result.date | date}}</div>
                 <div>{{result.test.name}}</div>
                 <div>{{((result.questionsMax / result.questionsRight) * 100 ) | number}}%</div>
               </div>

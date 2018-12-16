@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { ApiCallsService } from '../api-calls.service';
+import { HttpHeaders } from '@angular/common/http';
 import {  Router } from '@angular/router';
 
 @Component({
@@ -16,13 +17,18 @@ export class LoginPageComponent implements OnInit {
   password = new FormControl('');
   resStatus: number;
 
+  httpOptions = {
+    headers: new HttpHeaders({
+     responseType: 'text' })
+  };
+
   sendLoginData() {
     const data = {
-      login: <string>this.login.value,
-      password: <string>this.password.value,
+      login: this.login.value,
+      password: this.password.value,
     };
 
-    this.api.put('auth/login', data)
+    this.api.post('auth/login', data , this.httpOptions)
     .subscribe(res => {
        if ( res.status === 200 ) {
         this.router.navigate(['user']);

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiCallsService } from '../api-calls.service';
+import { AuthService } from '../auth.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -10,10 +12,15 @@ import { ApiCallsService } from '../api-calls.service';
 
 export class UserInfoPageComponent implements OnInit {
 
-  constructor(private api: ApiCallsService) { }
+  constructor(private api: ApiCallsService , private auth: AuthService ,  private router: Router) { }
 
   results: any ;
   user: any;
+
+  onLogOut() {
+    this.router.navigate(['']);
+    this.auth.deleteCookie('token');
+  }
 
   ngOnInit() {
     this.user = {};

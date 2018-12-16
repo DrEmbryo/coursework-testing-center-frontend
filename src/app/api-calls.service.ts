@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -12,11 +12,8 @@ export class ApiCallsService {
    return this.http.get(('/api/' + url) , { observe: 'response' } );
   }
 
-  put (url , postObj) {
-    return this.http.put(('/api/' + url) , postObj , { observe: 'response' } );
+  post (url: string , postObj: object , headers) {
+    return this.http.post(('/api/' + url) , postObj , { headers , observe: 'response'} );
   }
 
-  post (url , postObj) {
-    return this.http.post(('/api/' + url) , postObj , { observe: 'response' } );
-  }
 }

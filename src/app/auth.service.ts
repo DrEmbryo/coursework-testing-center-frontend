@@ -25,6 +25,11 @@ export class AuthService {
     return '';
   }
 
+   deleteCookie(cname) {
+    const expires = 'expires=Thu, 01 Jan 1970 00:00:00 UTC';
+    document.cookie = cname + '=;' + expires + ';path=/';
+  }
+
   checkToken () {
     if (this.getCookie('token') === '') {
       return this.haveToken = false;
