@@ -3,8 +3,8 @@
     <div class="result_form">
       <h1>Test result:</h1>
       <div>
-        <p>{{result.correct}} / {{result.all}}</p>
-        <p>procent: {{(result.correct / result.all) * 100 | number}} %</p>
+        <p>{{result.questionsRight}} / {{result.questionsMax}}</p>
+        <p>procent: {{(result.questionsRight / result.questionsMax) * 100 | number}} %</p>
       </div>
       <div class="result_button" [routerLink]="['/user']">Return</div>
     </div>

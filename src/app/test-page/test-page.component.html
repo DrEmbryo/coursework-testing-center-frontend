@@ -4,23 +4,22 @@
             <div class="test_question_text">
                 <h4>{{question.question}}</h4>
             </div>
-            <div>
-                <div>
-                    <div class="test_question_check" *ngFor="let answer of question.answers">
-                        <div class="test_question_check_box">
-                            <input type="checkbox">
-                        </div>
-                        <div>
-                            {{answer}}
-                        </div>
+        <div class="test_question_list">
+            <div class="test_question_check" *ngFor="let answer of question.answers; let i = index">
+                <div class="test_question_data"  (click)="onSelectItem(i)">
+                    <div>
+
+                    </div>
+                    <div>
+                        {{answer}}
                     </div>
                 </div>
             </div>
-        </div>
+        </div>    
         <div class="test_button_container">
             <div *ngIf="!last" class="test_button" (click)="nextQuestion()">next</div>
             <div *ngIf="last" class="test_button" (click)="endTest()">end</div>
         </div>
+        </div>
     </div>
 </div>
-  

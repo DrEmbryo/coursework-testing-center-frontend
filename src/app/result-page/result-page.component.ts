@@ -2,11 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ActivatedRoute } from '@angular/router';
 
-interface Iresult {
-  correct: number;
-  all: number;
-}
-
 @Component({
   selector: 'app-result-page',
   templateUrl: './result-page.component.html',
@@ -17,7 +12,7 @@ export class ResultPageComponent implements OnInit {
   constructor(private http: HttpClient, private activatedroute: ActivatedRoute) { }
   selectedTestId: any;
 
-  result = <Iresult>{
+  result = {
     correct: 0,
     all: 0,
   };
@@ -25,11 +20,14 @@ export class ResultPageComponent implements OnInit {
   ngOnInit() {
     this.activatedroute.url.subscribe(data => {
       this.selectedTestId = data[1].path;
+      const url = this.selectedTestId.split('/');
+      this.selectedTestId = url.slice(-1)[0];
       });
 
-    this.http.get<Iresult>(('/api/test-result?id=' + this.selectedTestId ) , { observe: 'response' } )
+    this.http.get<any>(('/api/results/' + this.selectedTestId ) , { observe: 'response' } )
     .subscribe(res => {
-      this.result = res.body ;
+      this.result = res.body;
+      console.log(this.result);
     });
   }
 

@@ -40,7 +40,7 @@
     height: auto;
 }
 
-.test_button:not([disabled]):hover{
+.test_button:hover{
     transition:  background-color 250ms linear;
     background-color: rgba(68, 157, 184, 1);
     cursor: pointer;
@@ -49,7 +49,7 @@
 
 .test_grid {
     width: 100%;
-    height:  calc(100% - 100px);
+    height:  100%;
     display: grid;
     grid-template-rows: 1fr 5fr;
 }
@@ -59,18 +59,15 @@
     justify-self: center;
 }
 
-.test_question_check {
+.test_question_data {
     display: grid;
     grid-template-columns: 1fr 10fr;
+    margin: 0 10% ;
+    font-size: 22pt;
+    cursor: pointer;
+    border: 3px solid transparent;
 }
 
-.test_question_check_box {
-    text-align: center;
-} 
-
-.test_question_check_box input:hover {
-    cursor: pointer;
-} 
 
 .test_question_input {
     text-align: center;

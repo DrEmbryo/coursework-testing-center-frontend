@@ -33,7 +33,6 @@ export class UserInfoPageComponent implements OnInit {
     this.api.get('results')
     .subscribe(res => {
       this.results = res.body;
-      console.log(this.results);
    });
   }
 

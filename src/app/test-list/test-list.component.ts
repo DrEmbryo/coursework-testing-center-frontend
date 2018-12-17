@@ -36,7 +36,6 @@ export class TestListComponent implements OnInit {
     this.http.get<ItestList>('/api/tests' , { observe: 'response' } )
     .subscribe(res => {
       this.testList = res.body ;
-      console.log(res.body);
     });
   }
 
