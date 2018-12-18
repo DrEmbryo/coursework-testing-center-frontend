@@ -4,11 +4,14 @@
             <div class="test_question_text">
                 <h4>{{question.question}}</h4>
             </div>
-        <div class="test_question_list">
+        <div class="test_question_list" #checkboxes>
             <div class="test_question_check" *ngFor="let answer of question.answers; let i = index">
-                <div class="test_question_data"  (click)="onSelectItem(i)">
+                <div class="test_question_data">
                     <div>
-
+                        <label class="container">
+                            <input type="checkbox" (change)="onSelectItem($event,i)">
+                            <span class="checkmark"></span>
+                        </label>
                     </div>
                     <div>
                         {{answer}}

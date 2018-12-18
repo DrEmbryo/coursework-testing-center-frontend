@@ -1,8 +1,8 @@
-// '✔️'
 // 5c0bcf96dd9bb23744c7122b
 import { Component, OnInit } from '@angular/core';
 import { Router , ActivatedRoute } from '@angular/router';
 import { ApiCallsService } from '../api-calls.service';
+import {ViewChild, ElementRef} from '@angular/core';
 
 @Component({
   selector: 'app-test-page',
@@ -14,6 +14,8 @@ export class TestPageComponent implements OnInit {
 
   constructor(private route: Router , private activatedroute: ActivatedRoute, private api: ApiCallsService) { }
 
+  @ViewChild('checkboxes') checkboxesElemRef: ElementRef;
+
   questions: any;
   currentQuestion = 0;
   question: any ;
@@ -22,8 +24,20 @@ export class TestPageComponent implements OnInit {
   testAnswers = [];
   questionAnswer = [];
 
-  onSelectItem(i) {
+  onSelectItem(event , i) {
+    const check = event.target.checked;
+    this.questionAnswer[i].checked = check;
+  }
 
+  arrayRebuild() {
+    for (let i = 0; i < this.question.answers.length; i++) {
+      const obj = {
+        index: i,
+        answer: this.question.answers[i],
+        checked: false,
+      };
+      this.questionAnswer.push(obj);
+    }
   }
 
   checkIfLast () {
@@ -32,13 +46,29 @@ export class TestPageComponent implements OnInit {
     }
   }
 
+  addToArray (arr , obj) {
+    arr.push(obj);
+  }
+
+  setCheckBoxesToDefault () {
+    const cbx = this.checkboxesElemRef.nativeElement.getElementsByTagName('input');
+    for (let i = 0; i < cbx.length; i++) {
+      cbx[i].checked = false ;
+    }
+  }
+
   nextQuestion() {
     this.currentQuestion++;
+    this.addToArray(this.testAnswers , this.questionAnswer);
     this.checkIfLast ();
+    this.questionAnswer = [] ;
     this.question = this.questions[this.currentQuestion];
+    this.arrayRebuild();
+    this.setCheckBoxesToDefault();
   }
 
   endTest() {
+    this.addToArray(this.testAnswers , this.questionAnswer); // push last element
     this.url = '5c0bcf96dd9bb23744c7122b';
     this.route.navigate(['/test-result', this.url]);
   }
@@ -56,6 +86,7 @@ export class TestPageComponent implements OnInit {
       this.questions = testData.questions;
       this.question = this.questions[0];
       this.checkIfLast ();
+      this.arrayRebuild();
     });
   }
 }
