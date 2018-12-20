@@ -1,8 +1,7 @@
-// 5c0bcf96dd9bb23744c7122b
 import { Component, OnInit } from '@angular/core';
 import { Router , ActivatedRoute } from '@angular/router';
 import { ApiCallsService } from '../api-calls.service';
-import {ViewChild, ElementRef} from '@angular/core';
+import { ViewChild, ElementRef } from '@angular/core';
 
 @Component({
   selector: 'app-test-page',
@@ -19,6 +18,7 @@ export class TestPageComponent implements OnInit {
   questions: any;
   currentQuestion = 0;
   question: any ;
+  testId = '';
   url = '';
   last: boolean;
   testAnswers = [];
@@ -69,18 +69,25 @@ export class TestPageComponent implements OnInit {
 
   endTest() {
     this.addToArray(this.testAnswers , this.questionAnswer); // push last element
-    this.url = '5c0bcf96dd9bb23744c7122b';
-    this.route.navigate(['/test-result', this.url]);
+    this.api.post('/results', {
+    testId: this.testId,
+    answers: this.testAnswers
+    }
+    , {})
+    .subscribe( res  => {
+      this.url = res.body._id;
+      this.route.navigate(['/test-result', this.url]);
+    });
   }
 
   ngOnInit() {
 
     this.question = {};
     this.activatedroute.url.subscribe(data => {
-    this.url += data[1].path;
+    this.testId += data[1].path;
     });
 
-    this.api.get('tests/' + this.url)
+    this.api.get('tests/' + this.testId)
     .subscribe(res => {
       const testData = <any> res.body;
       this.questions = testData.questions;
