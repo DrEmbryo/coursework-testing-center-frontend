@@ -1,12 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
-
-
-interface ItestList {
-  id: string;
-  testName: string;
-}
+import { ApiCallsService } from '../api-calls.service';
 
 @Component({
   selector: 'app-test-list',
@@ -15,7 +9,7 @@ interface ItestList {
 })
 export class TestListComponent implements OnInit {
 
-  constructor(private http: HttpClient, private router: Router) { }
+  constructor(private api: ApiCallsService, private router: Router) { }
   itemSelected: boolean;
   selectedIndex: number;
   testList: any ;
@@ -33,7 +27,7 @@ export class TestListComponent implements OnInit {
 
   ngOnInit() {
     this.itemSelected = false;
-    this.http.get<ItestList>('/api/tests' , { observe: 'response' } )
+    this.api.get('tests')
     .subscribe(res => {
       this.testList = res.body ;
     });

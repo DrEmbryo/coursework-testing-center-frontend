@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { ActivatedRoute } from '@angular/router';
+import { ApiCallsService } from '../api-calls.service';
 
 @Component({
   selector: 'app-result-page',
@@ -9,13 +9,10 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class ResultPageComponent implements OnInit {
 
-  constructor(private http: HttpClient, private activatedroute: ActivatedRoute) { }
+  constructor(private api: ApiCallsService, private activatedroute: ActivatedRoute) { }
   selectedTestId: any;
 
-  result = {
-    correct: 0,
-    all: 0,
-  };
+  result: any;
 
   ngOnInit() {
     this.activatedroute.url.subscribe(data => {
@@ -24,7 +21,7 @@ export class ResultPageComponent implements OnInit {
       this.selectedTestId = url.slice(-1)[0];
       });
 
-    this.http.get<any>(('/api/results/' + this.selectedTestId ) , { observe: 'response' } )
+    this.api.get(('results/' + this.selectedTestId ))
     .subscribe(res => {
       this.result = res.body;
     });
