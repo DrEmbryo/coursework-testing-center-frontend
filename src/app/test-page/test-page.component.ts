@@ -69,7 +69,7 @@ export class TestPageComponent implements OnInit {
 
   endTest() {
     this.addToArray(this.testAnswers , this.questionAnswer); // push last element
-    this.api.post('/results', {
+    this.api.post('results', {
     testId: this.testId,
     answers: this.testAnswers
     }
