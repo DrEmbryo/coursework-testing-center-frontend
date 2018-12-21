@@ -27,7 +27,6 @@ export class ResultPageComponent implements OnInit {
     this.http.get<any>(('/api/results/' + this.selectedTestId ) , { observe: 'response' } )
     .subscribe(res => {
       this.result = res.body;
-      console.log(this.result);
     });
   }
 

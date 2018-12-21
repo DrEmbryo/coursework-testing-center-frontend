@@ -4,7 +4,7 @@
       <h1>Test result:</h1>
       <div>
         <p>{{result.questionsRight}} / {{result.questionsMax}}</p>
-        <p>procent: {{(result.questionsRight / result.questionsMax) * 100 | number}} %</p>
+        <p>procent: {{((result.questionsRight * 100 ) / result.questionsMax ) | number}} %</p>
       </div>
       <div class="result_button" [routerLink]="['/user']">Return</div>
     </div>
